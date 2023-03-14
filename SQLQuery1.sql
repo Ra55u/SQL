@@ -1,6 +1,6 @@
 -- kommentaar
 
-create atabase TARpe22
+create database TARpe22
 
 -- db kustutamine
 drop database TARpe22
@@ -20,7 +20,7 @@ values (1, 'Female')
 insert into Gender (Id, Gender)
 values (3, 'Unknown')
 
---- sama Id v‰‰rtusega rida ei saa sisestada
+--- sama Id v√§√§rtusega rida ei saa sisestada
 select * from Gender
 
 --- teeme uue tabeli
@@ -53,12 +53,12 @@ values (8, NULL, NULL, 2)
 
 select * from Person
 
--- vıırvıtme ¸henduse loomine kahe tabeli vahel
+-- v√µ√µrv√µtme √ºhenduse loomine kahe tabeli vahel
 alter table Person add constraint tblPerson_GenderId_FK
 foreign key (GenderId) references Gender(Id)
 
---- kui sisestad uue rea andmeid ja ei ole sisestanud GenderId all v‰‰rtust, siis
---- see automaatselt sisestab tabelisse v‰‰rtuse 3 ja selleks on unknown
+--- kui sisestad uue rea andmeid ja ei ole sisestanud GenderId all v√§√§rtust, siis
+--- see automaatselt sisestab tabelisse v√§√§rtuse 3 ja selleks on unknown
 alter table Person
 add constraint DF_Persons_GenderId
 default 3 for GenderId
@@ -68,7 +68,7 @@ values (7, 'Ironman', 'i@i.com')
 
 select * from Person
 
---piirangu maha vıtmine
+--piirangu maha v√µtmine
 alter table Person
 drop constraint DF_Persons_GenderId
 
@@ -77,7 +77,7 @@ alter table Person
 add Age nvarchar(10)
 
 --- lisame vanuse piirangu sisestamisel
---- ei saa lisada suuremat v‰‰rtust kui 801
+--- ei saa lisada suuremat v√§√§rtust kui 801
 alter table Person
 add constraint CK_Person_Age check (Age > 0 and Age < 801)
 
@@ -96,54 +96,54 @@ where Id = 1
 alter table Person
 add City nvarchar(50)
 
--- kıik, kes elavad Gothami linnas
+-- k√µik, kes elavad Gothami linnas
 select * from Person where City = 'Gotham'
--- kıik, kes ei ela Gothami linnas
+-- k√µik, kes ei ela Gothami linnas
 select * from Person where City != 'Gotham'
 -- teine variant
 select * from Person where not City = 'Gotham'
 -- kolmas variant
 select * from Person where City <> 'Gotham'
 
--- n‰itab teatud vanusega inimesi
+-- n√§itab teatud vanusega inimesi
 select * from Person where Age = 800 or Age = 35 or Age = 27
 select * from Person where Age in (800, 35, 27)
 
--- n‰itab teatud vanusevahemikus olevaid inimesi
+-- n√§itab teatud vanusevahemikus olevaid inimesi
 select * from Person where Age between 20 and 35
 
--- wildcard e n‰itab kıik g-t‰hega linnad
+-- wildcard e n√§itab k√µik g-t√§hega linnad
 select * from Person where City like 'g%'
--- n‰itab kıik emailid, milles on @ m‰rk
+-- n√§itab k√µik emailid, milles on @ m√§rk
 select * from Person where Email like '%@%'
 
---- n‰itab kıiki, kellel ei ole @-m‰rki emailis
+--- n√§itab k√µiki, kellel ei ole @-m√§rki emailis
 select * from Person where Email not like '%@%'
 
---- N‰itab, kellel on emailis ees ja peale @-m‰rki
--- ainult ¸ks t‰ht
+--- N√§itab, kellel on emailis ees ja peale @-m√§rki
+-- ainult √ºks t√§ht
 select * from Person where Email like '_@_.com'
 
--- kıik, kellel ei ole nimes esimene t‰ht W, A, C
+-- k√µik, kellel ei ole nimes esimene t√§ht W, A, C
 select * from Person where Name like '[^WAC]%'
 
 --- kes elavad Gothamis ja New Yorkis
 select * from Person where (City = 'Gotham' or City = 'New York')
 
--- kıik kes elavad Gothamis ja New Yorkis ning
+-- k√µik kes elavad Gothamis ja New Yorkis ning
 -- alla 30 eluaasta
 select * from Person where
 (City = 'Gotham' or City = 'New York')
 and Age >= 30
 
---- kuvab t‰hestikulises j‰rjekorras inimesi
---- ja vıtab aluseks nime
+--- kuvab t√§hestikulises j√§rjekorras inimesi
+--- ja v√µtab aluseks nime
 
 select * from Person order by Name
--- kuvab vastupidises j‰rjekorras
+-- kuvab vastupidises j√§rjekorras
 select * from Person order by Name desc
 
--- vıtab kolm esimest rida
+-- v√µtab kolm esimest rida
 -- kommentaar
 
 create atabase TARpe22
@@ -166,7 +166,7 @@ values (1, 'Female')
 insert into Gender (Id, Gender)
 values (3, 'Unknown')
 
---- sama Id v‰‰rtusega rida ei saa sisestada
+--- sama Id v√§√§rtusega rida ei saa sisestada
 select * from Gender
 
 --- teeme uue tabeli
@@ -199,12 +199,12 @@ values (8, NULL, NULL, 2)
 
 select * from Person
 
--- vıırvıtme ¸henduse loomine kahe tabeli vahel
+-- v√µ√µrv√µtme √ºhenduse loomine kahe tabeli vahel
 alter table Person add constraint tblPerson_GenderId_FK
 foreign key (GenderId) references Gender(Id)
 
---- kui sisestad uue rea andmeid ja ei ole sisestanud GenderId all v‰‰rtust, siis
---- see automaatselt sisestab tabelisse v‰‰rtuse 3 ja selleks on unknown
+--- kui sisestad uue rea andmeid ja ei ole sisestanud GenderId all v√§√§rtust, siis
+--- see automaatselt sisestab tabelisse v√§√§rtuse 3 ja selleks on unknown
 alter table Person
 add constraint DF_Persons_GenderId
 default 3 for GenderId
@@ -214,7 +214,7 @@ values (7, 'Ironman', 'i@i.com')
 
 select * from Person
 
---piirangu maha vıtmine
+--piirangu maha v√µtmine
 alter table Person
 drop constraint DF_Persons_GenderId
 
@@ -223,7 +223,7 @@ alter table Person
 add Age nvarchar(10)
 
 --- lisame vanuse piirangu sisestamisel
---- ei saa lisada suuremat v‰‰rtust kui 801
+--- ei saa lisada suuremat v√§√§rtust kui 801
 alter table Person
 add constraint CK_Person_Age check (Age > 0 and Age < 801)
 
@@ -242,51 +242,51 @@ where Id = 1
 alter table Person
 add City nvarchar(50)
 
--- kıik, kes elavad Gothami linnas
+-- k√µik, kes elavad Gothami linnas
 select * from Person where City = 'Gotham'
--- kıik, kes ei ela Gothami linnas
+-- k√µik, kes ei ela Gothami linnas
 select * from Person where City != 'Gotham'
 -- teine variant
 select * from Person where not City = 'Gotham'
 -- kolmas variant
 select * from Person where City <> 'Gotham'
 
--- n‰itab teatud vanusega inimesi
+-- n√§itab teatud vanusega inimesi
 select * from Person where Age = 800 or Age = 35 or Age = 27
 select * from Person where Age in (800, 35, 27)
 
--- n‰itab teatud vanusevahemikus olevaid inimesi
+-- n√§itab teatud vanusevahemikus olevaid inimesi
 select * from Person where Age between 20 and 35
 
--- wildcard e n‰itab kıik g-t‰hega linnad
+-- wildcard e n√§itab k√µik g-t√§hega linnad
 select * from Person where City like 'g%'
--- n‰itab kıik emailid, milles on @ m‰rk
+-- n√§itab k√µik emailid, milles on @ m√§rk
 select * from Person where Email like '%@%'
 
---- n‰itab kıiki, kellel ei ole @-m‰rki emailis
+--- n√§itab k√µiki, kellel ei ole @-m√§rki emailis
 select * from Person where Email not like '%@%'
 
---- N‰itab, kellel on emailis ees ja peale @-m‰rki
--- ainult ¸ks t‰ht
+--- N√§itab, kellel on emailis ees ja peale @-m√§rki
+-- ainult √ºks t√§ht
 select * from Person where Email like '_@_.com'
 
--- kıik, kellel ei ole nimes esimene t‰ht W, A, C
+-- k√µik, kellel ei ole nimes esimene t√§ht W, A, C
 select * from Person where Name like '[^WAC]%'
 
 --- kes elavad Gothamis ja New Yorkis
 select * from Person where (City = 'Gotham' or City = 'New York')
 
--- kıik kes elavad Gothamis ja New Yorkis ning
+-- k√µik kes elavad Gothamis ja New Yorkis ning
 -- alla 30 eluaasta
 select * from Person where
 (City = 'Gotham' or City = 'New York')
 and Age >= 30
 
---- kuvab t‰hestikulises j‰rjekorras inimesi
---- ja vıtab aluseks nime
+--- kuvab t√§hestikulises j√§rjekorras inimesi
+--- ja v√µtab aluseks nime
 
 select * from Person order by Name
--- kuvab vastupidises j‰rjekorras
+-- kuvab vastupidises j√§rjekorras
 select top 3 * from Person
 
 --- 2 tund
