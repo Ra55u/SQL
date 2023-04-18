@@ -592,3 +592,46 @@ select YEAR('03/31/2020') -- annab stringis oleva aasta nr
 select DATENAME(DAY, '2023-04-11 11:52:35.836') -- annab stringis oleva päeva numbri
 select DATENAME(WEEKDAY, '2023-04-11 11:52:35.836') -- annab stringis oleva päeva sõnana
 select DATENAME(MONTH, '2023-04-11 11:52:35.836') -- annab stringis oleva kuu sõnana
+
+--- 5 tund
+create function fnComputerAge(@DOB datetime)
+returns nvarchar(50)
+as begin
+	declare @tempdate datetime, @years int, @months int, @days int
+		select @tempdate = @DOB
+
+		select @years = DATEDIFF(YEAR, @tempdate, GETDATE()) - case when (MONTH(@DOB) >
+		MONTH(GETDATE())) or (MONTH(@DOB)
+		= month(getdate()) and DAY(@DOB) > DAY(GETDATE())) then 1 else 0 end
+		select @tempdate = DATEADD(YEAR, @years, @tempdate)
+
+		select @months = DATEDIFF(MONTH, @tempdate, GETDATE()) - case when DAY(@DOB)  DAY(GETDATE)))
+		select @tempdate = DATEADD(MONTH, @months, @tempdate)
+
+		select @days = DATEDIFF(DAY, @tempdate, GETDATE())
+	declare @Age nvarchar(50)
+		set @Age = CAST(@years as nvarchar(4)) + ' Years ' + CAST(@months as nvarchar(4)) + ' Months ' + CAST(@days as nvarchar(4)) + ' Days old '
+	return @Age
+end
+
+-- saame vaadata kasutajate vanust
+select Id, Name, DateOfBirth, dbo.fnComputerAge(DateOfBirth)
+as Age from Employees
+-- kui kasutame seda funktsiooni, siis saame teada tänase päeva vahe
+-- stringis välja toodud kuupäevaga
+select dbo.fnComputerAge('11/11/2010')
+
+-- nr peale DateOfBirth muutujat näitab, et mismoodi kuvada DOB
+select Id, Name, DateOfBirth,
+CONVERT(nvarchar, DateOfBirth, 126) as ConvertedDOB
+from Employees
+
+select Id, Name, LastName + ' - ' + CAST(Id as nvarchar)
+as [Name-Id] from Employees
+
+
+select CAST(GETDATE() as date) -- tänane kp
+select CONVERT(date, GETDATE()) -- tänane k
+
+-- matemaatilised funktsioonid
+select ABS(-101.5)
